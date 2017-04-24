@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
+  const ip = req.connection.remoteAddress;
   const acceptedLanguages = req.headers['accept-language'];
   const language = acceptedLanguages.split(',')[0] || '';
 
@@ -10,7 +11,7 @@ app.get('/', (req, res) => {
   const operatingSystem = userAgent.match(/\((.*?)\)/)[1] || '';
 
   res.json({
-    ipaddress: req.ip,
+    ipaddress: ip,
     language: language,
     software: operatingSystem,
   })
