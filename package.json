@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Kai Mies <develop@regnavi.de>",
   "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "express": "^4.15.2"
   }
