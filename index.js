@@ -3,7 +3,11 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-  const ip = req.connection.remoteAddress;
+  const ip = req.headers['x-forwarded-for'] || 
+     req.connection.remoteAddress || 
+     req.socket.remoteAddress ||
+     req.connection.socket.remoteAddress;
+     
   const acceptedLanguages = req.headers['accept-language'];
   const language = acceptedLanguages.split(',')[0] || '';
 
